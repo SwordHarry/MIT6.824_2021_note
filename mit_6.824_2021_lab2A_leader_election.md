@@ -95,7 +95,7 @@ raft 将分布式一致性共识分解为若干个子问题，lab2 系列也随�
 
 #### 关于 Figure2
 
-![image-20211010213108332](https://tva1.sinaimg.cn/large/008i3skNgy1gvajftq7jmj60u00xyk1402.jpg)
+![image-20211010213108332](./img/008i3skNgy1gvajftq7jmj60u00xyk1402.png)
 
 很多资料，包括 student guide 都说，论文的图二需要反复检查，并且全部严格实现；
 
@@ -464,7 +464,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 ### 实验结果
 
-![image-20211010221750816](https://tva1.sinaimg.cn/large/008i3skNgy1gvaksdbshqj60o20bedgq02.jpg)
+![image-20211010221750816](./img/008i3skNgy1gvaksdbshqj60o20bedgq02.png)
 
 这里也要提一下，实验结果的5列数据，从左往右分别是 测试花费的时间（秒）、Raft peer的数量（通常为 3 或 5 个）、测试期间发送的 RPC 数量、RPC 消息中的总字节数 以及 Raft 的日志条目数提交数
 

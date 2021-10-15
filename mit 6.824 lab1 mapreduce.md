@@ -31,7 +31,7 @@
 
 然后是这张架构图要了然于心：
 
-<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gskdg2ig4tj30zq0okwgf.jpg" alt="image-20210717125742830" style="zoom:50%;" />
+<img src="./img/008i3skNgy1gskdg2ig4tj30zq0okwgf.png" alt="image-20210717125742830"/>
 
 但是其中也是有很多细节没有给出需要注意的，实验中给出了足够的提示，整理如下：
 
@@ -51,7 +51,7 @@
 
 根据提示和自己的理解，生成架构如下
 
-![image-20210717134658382](https://tva1.sinaimg.cn/large/008i3skNgy1gskdgee0yjj30um0i5gmx.jpg)
+![image-20210717134658382](./img/008i3skNgy1gskdgee0yjj30um0i5gmx.png)
 
 
 
@@ -77,7 +77,7 @@ master 还可以记录一个 worker 的状态map，用于记录 worker 的健康
 
 #### worker
 
-<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gskd9m5c0dj30oq114dhb.jpg" alt="image-20210717233044694" style="zoom:50%;" />
+<img src="./img/008i3skNgy1gskd9m5c0dj30oq114dhb.png" alt="image-20210717233044694" style="zoom:50%;" />
 
 ### 关于实验
 
