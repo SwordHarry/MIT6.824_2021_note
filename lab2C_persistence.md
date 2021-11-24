@@ -57,6 +57,10 @@ persistence 引入持久化，持久化的相关代码已经在 `persister.go` �
 2. nextIndex 优化：在找 nextIndex 优化的指定下标时，默认了 term 连续，这里 term 很可能不是连续的，有可能会找不到
 3. 正确处理 rpc 请求：在 发送 rpc 请求 和 处理 rpc 返回体时都需要判断一次自身状态，即`currentTerm`和`state`；举个例子，本人遇到的 bug 是，一个陈旧的 leader 在广播后，接收到第一个 follower 的 reply，其 term 是比自身的 term 要大的，陈旧 leader 变回 follower，并且 term 更新，但是因为仍在广播，在发送第二个 rpc 请求时，若没有检查自身状态，则会以 follower 的身份将错误的 log 发送给其他 follower，导致 apply error
 
+### 实验结果
+
+![image-20211025194810028](./img/008i3skNgy1gvrsrar2wzj30za0nsq5g.png)
+
 ### 感想
 
 讲道理，lab2C 的内容其实算是很少的了，但是本人因为 lab2B 引入的bug，导致 lab2C 卡住的时间是最久的；真的，要设计封装好代码，不要写晦涩难懂的，然后遇到 bug 只能多打日志，在上千行日志里找逻辑错误
