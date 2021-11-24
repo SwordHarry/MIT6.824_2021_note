@@ -107,25 +107,26 @@ duplicate requests：要求所有的 Rpc 请求都是幂等的；考虑这样一
 
 #### 引入的 bug
 
-- 对 golang 的 map 的不熟悉导致
+1. 对 golang 的 map 的不熟悉导致
 
-  在释放`waitCh`的代码里，我加入了一段置为`nil`的逻辑，`waitCh`这里采用了`make(chanOp, 1)`保留一个空间的读阻塞，但写不阻塞的 chan，为了保证`applyCh`的事件循环里能尽量不阻塞地运行，同时处理请求的下游又能阻塞住等待通知。这里置为`nil`以后，再次取`kv.opDoneChanMap[index]`竟然返回了`opChan`的`cap `为0的一个 `chan`，且`ok`为 true，导致了死锁的发生。。。即map里值若是引用类型，置为`nil`会判定为这个map有值，下次取的时候会拿零值，故真正的清除应该是调用`delete`内置方法
+在释放`waitCh`的代码里，我加入了一段置为`nil`的逻辑，`waitCh`这里采用了`make(chanOp, 1)`保留一个空间的读阻塞，但写不阻塞的 chan，为了保证`applyCh`的事件循环里能尽量不阻塞地运行，同时处理请求的下游又能阻塞住等待通知。这里置为`nil`以后，再次取`kv.opDoneChanMap[index]`竟然返回了`opChan`的`cap `为0的一个 `chan`，且`ok`为 true，导致了死锁的发生。。。即map里值若是引用类型，置为`nil`会判定为这个map有值，下次取的时候会拿零值，故真正的清除应该是调用`delete`内置方法
 
-  ```golang
-  func (kv *KVServer) deleteMsgChan(index int) {
-     opChan, ok := kv.opDoneChanMap[index]
-     if ok {
-        close(opChan)
-        delete(kv.opDoneChanMap, index)
-        // bug fix: 这里不能置 nil，否则再次取kv.opDoneChanMap[index]时，将会取到一个 len(0) cap(0) 的 chan
-        //kv.opDoneChanMap[index] = nil
-     }
-  }
-  ```
+```golang
+func (kv *KVServer) deleteMsgChan(index int) {
+   opChan, ok := kv.opDoneChanMap[index]
+   if ok {
+      close(opChan)
+      delete(kv.opDoneChanMap, index)
+      // bug fix: 这里不能置 nil，否则再次取kv.opDoneChanMap[index]时，将会取到一个 len(0) cap(0) 的 chan
+      //kv.opDoneChanMap[index] = nil
+   }
+}
+```
 
-- server timeout 之后，我尝试了也删除 chan，考虑如下情况：`select case`同时满足的情况下，还是会随机选择，而不是有优先级的（TODO：之后可以考虑实现一个有优先级的 select case 库），并且`applyCh`的事件循环和处理请求侧是并发进行的，此时如果 timeout 之后删除`waitCh`的同时，也有`Op->waitCh`了，会发生`panic`，向已经 close 的chan 写。 实现里超时就直接返回错误，不做处理，等下一次 client 重试不超时了，就会又回到对应的`waitCh`，此时再关闭清除即可
-- 如果`Start()`之前的Op和`applyCh`返回的Op 不一致，即对应的 index 里先后的Op不同，则表示leader 已经发生了替换，需要提示 client 重试。我之前的实现里，发现如果不一致，则直接返回重试，不去执行提交的Op了，注意这里即使不一样，也是需要无脑执行已从raft提交的Op，因为这是系统一致协商的结果，可信。这里没有执行新的Op，导致有些请求结果漏掉了，发生了线性不一致性
-- 线性一致性：之前的实现里，leader 和 follower 的处理 applyCh 返回的Op 有一些不一致，leader是`client -> kvservice -> Start() -> applyCh -> waitCh -> kvservice -> process Op -> client`;follower 是 `client -> kvservice -> Start() -> applyCh -> processOp -> waitCh -> kvservice -> client`；这样必定会导致线性不一致性，原因是`waitCh`是非写阻塞的，相当于在往其发送消息时是异步，有可能下一个向`waitCh`发送的消息要比上一个发送的`waitCh`的消息要快（虽然这个在认知里是几乎不可能的）；但是在将`waitCh`放置在`process Op`逻辑之后，leader 和 follower 都变成了`applyCh -> process Op -> waitCh(if have) -> kvservice`；即让异步操作在回复请求之前做，执行Op之后做，线性一致性就pass了，这个基本验证了我的想法；即在回复请求之前，调换顺序是可以接受的，但是Op 调换顺序，则会引发线性不一致性
+2. server timeout 之后，我尝试了也删除 chan，考虑如下情况：`select case`同时满足的情况下，还是会随机选择，而不是有优先级的（TODO：之后可以考虑实现一个有优先级的 select case 库），并且`applyCh`的事件循环和处理请求侧是并发进行的，此时如果 timeout 之后删除`waitCh`的同时，也有`Op->waitCh`了，会发生`panic`，向已经 close 的chan 写。 实现里超时就直接返回错误，不做处理，等下一次 client 重试不超时了，就会又回到对应的`waitCh`，此时再关闭清除即可
+
+3. 如果`Start()`之前的Op和`applyCh`返回的Op 不一致，即对应的 index 里先后的Op不同，则表示leader 已经发生了替换，需要提示 client 重试。我之前的实现里，发现如果不一致，则直接返回重试，不去执行提交的Op了，注意这里即使不一样，也是需要无脑执行已从raft提交的Op，因为这是系统一致协商的结果，可信。这里没有执行新的Op，导致有些请求结果漏掉了，发生了线性不一致性
+3. 线性一致性：之前的实现里，leader 和 follower 的处理 applyCh 返回的Op 有一些不一致，leader是`client -> kvservice -> Start() -> applyCh -> waitCh -> kvservice -> process Op -> client`;follower 是 `client -> kvservice -> Start() -> applyCh -> processOp -> waitCh -> kvservice -> client`；这样必定会导致线性不一致性，原因是`waitCh`是非写阻塞的，相当于在往其发送消息时是异步，有可能下一个向`waitCh`发送的消息要比上一个发送的`waitCh`的消息要快（虽然这个在认知里是几乎不可能的）；但是在将`waitCh`放置在`process Op`逻辑之后，leader 和 follower 都变成了`applyCh -> process Op -> waitCh(if have) -> kvservice`；即让异步操作在回复请求之前做，执行Op之后做，线性一致性就pass了，这个基本验证了我的想法；即在回复请求之前，调换顺序是可以接受的，但是Op 调换顺序，则会引发线性不一致性
 
 ### 实验结果
 
