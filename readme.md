@@ -4,11 +4,11 @@
 
 实验报告
 
-- [lab1](./lab/lab1_mapreduce)
-- [lab2A](./lab/lab2A_leader_election)
-- [lab2B](./lab/lab2B_log_replication)
-- [lab3A](./lab/lab3A_kvraft)
-- [lab3B](./lab/lab3B_kvraft_with_snapshots)
+- [lab1](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab1_mapreduce.md)
+- [lab2A](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab2A_leader_election.md)
+- [lab2B](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab2B_log_replication,md)
+- [lab3A](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab3A_kvraft.md)
+- [lab3B](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab3B_kvraft_with_snapshots.md)
 - lab4A(todo)
 - lab4B(todo)
 
