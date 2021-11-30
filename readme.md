@@ -7,6 +7,8 @@
 - [lab1](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab1_mapreduce.md)
 - [lab2A](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab2A_leader_election.md)
 - [lab2B](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab2B_log_replication,md)
+- [lab2C](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab2C_persistence)
+- [lab2D](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab2D_log_compaction)
 - [lab3A](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab3A_kvraft.md)
 - [lab3B](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab3B_kvraft_with_snapshots.md)
 - lab4A(todo)
