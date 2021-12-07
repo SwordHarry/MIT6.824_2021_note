@@ -11,7 +11,7 @@
 - [lab2D](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab2D_log_compaction.md)
 - [lab3A](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab3A_kvraft.md)
 - [lab3B](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab3B_kvraft_with_snapshots.md)
-- lab4A(todo)
+- [lab4A](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab4A_The_Shard_controller.md)
 - lab4B(todo)
 
 老师说，不要把作业上传到github，尊重他人的劳动成果
