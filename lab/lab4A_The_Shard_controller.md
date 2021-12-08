@@ -139,7 +139,9 @@ type ShardCtrler struct {
 
 此时 `Move` 操作也可能需要对`gid2ShardIdsMap`处理，需要将旧的`OldGid`中对应的`shard`移除，然后将`shard`append 到新的 gid 中
 
->  从`gid2ShardIdsMap`中找最多和最少shard 的 gid 时，可以一个 for 一起找出来，不需要遍历两次
+#### 寻找最多和最少 shard 的 gid
+
+从`gid2ShardIdsMap`中找最多和最少shard 的 gid 时，可以一个 for 一起找出来，不需要遍历两次；并且需要在找的时候先使用`sort`包做排序，因为 golang 的 map 是迭代无序的，如果直接无序遍历，也能过 lab4A，但是会导致 follower 和 leader 的配置不统一，lab4A 没有故障检测，所以也可以过。所以要让 leader 和 follower 的 config 保持一致，就需要做 `sort` 然后遍历
 
 引入`gid2ShardIdsMap`和`freeShards`，增加了内存开销，但是不需要即时通过`Config.Shards`和`Config.Groups`做遍历计算了，减少了`Join`和`Leave`的时间开销，但是`Move`的操作变复杂，增加了`Move`的时间开销
 
