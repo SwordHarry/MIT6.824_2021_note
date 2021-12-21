@@ -12,17 +12,9 @@
 - [lab3A](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab3A_kvraft.md)
 - [lab3B](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab3B_kvraft_with_snapshots.md)
 - [lab4A](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab4A_The_Shard_controller.md)
-- lab4B(todo)
+- [lab4B(含 challenge)](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/lab/lab4B_Sharded_KeyValue_Server.md)
 
-老师说，不要把作业上传到github，尊重他人的劳动成果
-
-实在不行就看点博客分享吧
-
-这里仅存放自己写 mit 6.824 过程中的心路历程，存放 md 文件(伪代码)，不存放源码
-
-自己实现才是硬道理
-
-
+仅存放部分代码片段或伪代码，基本是 md 笔记
 
 ## paper
 
