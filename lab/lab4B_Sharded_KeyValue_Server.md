@@ -387,19 +387,30 @@ func (kv *ShardKV) watchShardAndMigrate() {
 > 如果是 push 模式，存在 G1 和 G2，G1 需要 push 分片数据给 G2，push 成功后需要 GC，即：
 >
 > G1 ===== push args ======> G2
+>
 > G2 Start -> apply
+>
 > G1 <==== push reply ======= G2
+>
 > 一次 rpc 即可知道 push 成功了，随即 G1 即可进行 GC
+>
 > G1 Start GC -> apply
+>
 >
 > 如果是 pull 模式，G1 需要从G2 pull 分片数据，pull 成功后，G2 需要 GC，即：
 >
 > G1 ===== pull args ======> G2
+>
 > G1 <===== pull reply ====== G2
+>
 > G1 Start -> apply
+>
 > G2 并不能明确 pull reply 是否真正到达，只有 G1 才可以明确，所以需要 G1 再发送 GC 的通知，G2 接收到后方可GC
+>
 > G1 ===== GC args =====> G2
+>
 > G2 Start GC -> apply
+>
 > G1 <===== GC reply ===== G2
 >
 > 初步猜想，各有利弊，push 模式比 pull 模式少一次 rpc 调用
@@ -470,12 +481,19 @@ func (kv *ShardKV) MigrateShard(args *ShardReceiveArgs, reply *ShardReceiveReply
 但无论分片迁移使用的是 push 还是 pull，在这里我有一点自己的疑问，不知道这样考虑是否正确
 
 >configNum: []int (index: shardId, value: gid)
+>
 >1: [100, 100, 100]
+>
 >2: [100, 101, 102]
+>
 >3: [100, 100, 100]
+>
 >4: [100, 101, 102]
+>
 >当 gid 为 101 的 group 直接 shutdown 了，然后从 configNum 0 开始重放（如果没有 persister 做快照）
+>
 >如果是 pull 模式，101 在 conigNum 2 会 pull 100 的1号分片，在 configNum 3 时，101的 1 号分片又一直为 BePulling，等待 100 的 pull ，但是 100 在 configNum 4， 然后 101 就一直卡在 configNum 3 了
+>
 >如果是 push 模式，在 configNum 2 时，101 的 1 号分片为 BePushing，一直等待 100 的 push，但是 100 和 102 都在 configNum 4 了
 >这个重放的问题是否会发生？
 
