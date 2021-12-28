@@ -1,4 +1,4 @@
-# VM-Ft
+# VM-FT
 
 ## Lecture 4
 
