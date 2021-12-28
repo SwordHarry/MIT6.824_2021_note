@@ -22,7 +22,7 @@ schedule 中提出的 Question 的解答，以及自己对 paper 的一些梗概
 
 [GFS](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/GFS.md)
 
-
+[VM-FT](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/VM-FT.md)
 
 
 
