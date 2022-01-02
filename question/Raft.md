@@ -332,6 +332,8 @@ Raft 实现中是允许 Leader 和 follower 都可以自行主动安装快照，
 
 [TiKV 源码解析系列 - Lease Read](https://mp.weixin.qq.com/s?__biz=MzI3NDIxNTQyOQ==&mid=2247484499&idx=1&sn=79acb9b4b2f8baa3296f2288c4a0a45b)
 
+[TiDB 新特性漫谈：从 Follower Read 说起](https://zhuanlan.zhihu.com/p/78164196)
+
 对于读操作，最普通的是走 Leader 然后添加一个 read log 并且广播，这在性能上是十分低效的；
 
 本质上是为了确认当前 leader 仍被多数派接收，读操作不会读到陈旧数据
@@ -377,3 +379,4 @@ $$
 - [TiKV 源码解析系列 - Lease Read](https://mp.weixin.qq.com/s?__biz=MzI3NDIxNTQyOQ==&mid=2247484499&idx=1&sn=79acb9b4b2f8baa3296f2288c4a0a45b)
 - [TiKV 源码解析系列 - Raft 的优化](https://zhuanlan.zhihu.com/p/25735592)
 - [让Raft变快100倍 - Dragonboat的写优化](https://zhuanlan.zhihu.com/p/52620657)
+- [TiDB 新特性漫谈：从 Follower Read 说起](https://zhuanlan.zhihu.com/p/78164196)
