@@ -28,4 +28,5 @@ schedule 中提出的 Question 的解答，以及自己对 paper 的一些梗概
 - [Zookeeper](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/Zookeeper.md)
 - [Chain_Replication](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/Chain_Replication.md)
 - [Frangipani](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/Frangipani.md)
+- [Distributed_Transactions](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/Distributed_Transactions.md)
 
