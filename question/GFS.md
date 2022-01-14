@@ -8,7 +8,7 @@ Describe a sequence of events that would result in a client reading stale data f
 
 ### 讨论
 
-这篇博客很好很全面地总结了GFS：https://spongecaptain.cool/post/paper/googlefilesystem/
+这篇博客很好很全面地总结了GFS：[Google File System-GFS 论文阅读](https://spongecaptain.cool/post/paper/googlefilesystem/)
 
 读陈旧数据之前，先捋一下正常读情况下的GFS流程
 
@@ -60,17 +60,17 @@ Client 随即带 chunk version 访问对应 chunk server，若 chunk version 比
 
 GFS 文件系统包含了太多细节了，这里给出自己对 GFS 的梗概要点
 
-架构如下，图源自：https://spongecaptain.cool/post/paper/googlefilesystem
+架构如下，图源自：[Google File System-GFS 论文阅读](https://spongecaptain.cool/post/paper/googlefilesystem/)
 
 ![image-20200719162238223](./img/image-20200719162238223.png)
 
 - Master - Workers 架构
 - Master 管理元数据，包括每个 chunk_server 的状态，每个 chunk 的信息，文件命名空间结构，分配读写锁等
-- Workers 表示为组组 chunk_servers，对于一个 chunk，通常有一个主 chunk server 和两个副本 chunk server 容错
+- Workers 表示为一组 chunk_servers，对于一个 chunk，通常有一个主 chunk server 和两个副本 chunk server 容错
 - 文件分块，大文件以 chunk 区分，通常为 64MB
 - 写操作：追加和覆盖写，采用 Lease 租约，分配给一个 chunk server 租约，使其成为 primary，primary 决定写操作顺序，随即返回给 Master，Master 继续分发写操作顺序给从 chunk server；租约可以延长
 - Atomic Record Append，原子追加操作
-- GC
+- Master 定期扫描 replica 做垃圾回收，并且客户端请求删除时是 lazy GC
 - stale replica detection，过期数据检测
 - 高可用：快恢复，chunk 复制，Master 容错（shadow Master）
 - 数据完整性：checksum 校验和检测数据是否损坏
