@@ -29,5 +29,5 @@ schedule 中提出的 Question 的解答，以及自己对 paper 的一些梗概
 - [Chain_Replication](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/Chain_Replication.md)
 - [Frangipani](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/Frangipani.md)
 - [Distributed_Transactions](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/Distributed_Transactions.md)
-- [Bigtable](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/Bigtable.md)
+- [Bigtable](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/Bigtable.md) & [Spanner](https://github.com/SwordHarry/mit_6.824_2021_lab_chinese_note/blob/main/question/Spanner.md)
 
