@@ -50,7 +50,7 @@ Bigtable 分布式锁方面依赖 Chubby，我理解是一个类似于 Zookeeper
 
 图来自上文博客中
 
-![image-20200725100355004](https://spongecaptain.cool/images/img_paper/image-20200725100355004.png)
+![image-20200725100355004](./img/image-20200725100355004.png)
 
 ## LSM tree
 
