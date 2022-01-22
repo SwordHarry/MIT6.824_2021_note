@@ -16,7 +16,6 @@ Memcache at Facebook. Section 3.3 implies that a client that writes data does no
 
 - [Scaling Memcache in Facebook 笔记（一）](https://zhuanlan.zhihu.com/p/20734038)
 - [Scaling Memcache in Facebook 笔记（二）](https://zhuanlan.zhihu.com/p/20761071)
-
 - [Scaling Memcache in Facebook 笔记（三）](https://zhuanlan.zhihu.com/p/20827183)
 
 ## 一、facebook 架构演化
@@ -77,7 +76,7 @@ web server 先请求 memcache，若无数据则继续请求 mysql；写先落盘
 
 web server 无脑请求 memcache，memcache 作为 web server 和 mysql 的中间层，当查无缓存时，memcache 主动请求 mysql 入缓存且返回数据；
 
-## 五、一些细节优化
+## 四、一些细节优化
 
 ### 1. 在一个 cluster 内的优化
 
@@ -196,5 +195,4 @@ memcached 支持过期时间，可以延迟清除 key，但是有些 key 只会�
 - [Facebook 的 Memcached 系统扩展论文阅读](https://tanxinyu.work/scaling-memcached-thesis/)
 - [Scaling Memcache in Facebook 笔记（一）](https://zhuanlan.zhihu.com/p/20734038)
 - [Scaling Memcache in Facebook 笔记（二）](https://zhuanlan.zhihu.com/p/20761071)
-
 - [Scaling Memcache in Facebook 笔记（三）](https://zhuanlan.zhihu.com/p/20827183)
