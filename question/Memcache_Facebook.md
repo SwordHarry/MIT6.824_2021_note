@@ -6,9 +6,9 @@
 
 Memcache at Facebook. Section 3.3 implies that a client that writes data does not delete the corresponding key from the Gutter servers, even though the client does try to delete the key from the ordinary Memcached servers (Figure 1). Explain why it would be a bad idea for writing clients to delete keys from Gutter servers.
 
-【翻译】
+3.3 节描述了客户端写数据但不会 delete gutter 中的 key，即使客户端会尝试 delete memcache 中的；解释下为什么不删除 gutter 中的 key
 
-答：
+答：在老师的讲义中有提及，gutter 是 memcache 宕机时的兜底，主要是为了发出 delete 操作的负载减少；
 
 # 讨论
 
