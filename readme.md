@@ -33,4 +33,4 @@ schedule 中提出的 Question 的解答，以及自己对 paper 的一些梗概
 - [FaRM](https://github.com/SwordHarry/mit_6.824_2021_note/blob/main/question/FaRM.md)
 - [Spark](https://github.com/SwordHarry/mit_6.824_2021_note/blob/main/question/Spark.md)
 - [Memcache_Facebook](https://github.com/SwordHarry/mit_6.824_2021_note/blob/main/question/Memcache_Facebook.md)
-
+- [COPS](https://github.com/SwordHarry/mit_6.824_2021_note/blob/main/question/COPS.md)
