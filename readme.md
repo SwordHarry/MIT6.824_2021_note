@@ -1,5 +1,11 @@
 # mit_6824_2021_chinese_note
 
+## summary
+
+知识点回顾与总结
+
+- [summary](https://github.com/SwordHarry/mit_6.824_2021_note/blob/main/summary/summary.md)
+
 ## lab
 
 实验报告
