@@ -1,4 +1,4 @@
-# mit_6.824_2021_lab2D_log_compaction
+# MIT6.824_2021_lab2D_log_compaction
 
 lab2D 主要是日志压缩功能，实验里是采用论文的最简单的方式，snapshot 压缩快照，并且更简单的是不分块的形式；感觉主要有两点需要注意：
 

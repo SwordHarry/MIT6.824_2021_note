@@ -1,10 +1,8 @@
-# mit 6.824  2021 lab1 mapreduce
+# MIT 6.824  2021 lab1 mapreduce
 
 ## lab1 mapreduce
 
 实验：https://pdos.csail.mit.edu/6.824/labs/lab-mr.html
-
-实验结果源码：https://github.com/SwordHarry/mit6.824
 
 ## 实验背景
 
@@ -101,7 +99,7 @@ map 任务和 reduce 任务 都有可能随机退出，对于map 任务，此时
 
 真正写代码的时间只有两个下午，下手很难，但是从0到1以后就清晰了，在通过第一个 wc test 的时候，反馈还是很强烈的
 
-不得不说，mit 不愧是 mit
+不得不说，MIT 不愧是 MIT
 
 
 

@@ -1,4 +1,4 @@
-# mit_6.824_2021_lab4B_Sharded_Key/Value_Server
+# MIT6.824_2021_lab4B_Sharded_Key/Value_Server
 
 最后，构建一个分片的 kv 容错系统；感觉比 lab2 更难理解，因为 lab2 有一个模板论文可以参考，但是 lab4b 基本没有一个固定的范式
 
@@ -509,7 +509,7 @@ func (kv *ShardKV) MigrateShard(args *ShardReceiveArgs, reply *ShardReceiveReply
 
 完结撒花🎉
 
-lab4B 的难度应该是整个 lab 系列最大的，但是我在设计方案上参考了别人的实现，比起 lab2，可以有一份论文做为参考，lab4B 基本没有可以参考的细节；mit6.824 真的是神课，一套 lab paper schedule 跟下来，甚至可以写到简历上，什么时候国内的高校教育可以有这样的课程安排呢？感觉遥遥无期
+lab4B 的难度应该是整个 lab 系列最大的，但是我在设计方案上参考了别人的实现，比起 lab2，可以有一份论文做为参考，lab4B 基本没有可以参考的细节；MIT6.824 真的是神课，一套 lab paper schedule 跟下来，甚至可以写到简历上，什么时候国内的高校教育可以有这样的课程安排呢？感觉遥遥无期
 
 后续还要继续读 paper，上面有一些对 paper 的问题还是值得回答的
 

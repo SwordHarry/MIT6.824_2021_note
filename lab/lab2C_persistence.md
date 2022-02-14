@@ -1,4 +1,4 @@
-# mit_6.824_2021_lab2C_persistence
+# MIT6.824_2021_lab2C_persistence
 
 persistence 引入持久化，持久化的相关代码已经在 `persister.go` 中实现，我们要做的只是调用 api 就好，相对容易的一节；
 

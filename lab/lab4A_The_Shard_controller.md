@@ -1,4 +1,4 @@
-# mit_6.824_2021_lab4A_The_Shard_controller
+# MIT6.824_2021_lab4A_The_Shard_controller
 
 lab4 系列除了构建一个 键值存储系统，还需要将系统按键 分片(shard) 或对一组副本进行分区；
 

@@ -1,4 +1,4 @@
-# mit_6.824_2021_lab3B_kvraft_with_snapshots
+# MIT6.824_2021_lab3B_kvraft_with_snapshots
 
 ## Part B: Key/value service with snapshots
 

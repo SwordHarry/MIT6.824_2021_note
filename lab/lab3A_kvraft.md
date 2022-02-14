@@ -1,6 +1,4 @@
-# mit_6.824_2021_lab3A
-
-## mit_6.824_2021_lab3A_kvraft
+# MIT6.824_2021_lab3A_kvraft
 
 lab3 系列是将此前写好的 lab2 的 raft 库加以调用，在此基础之上实现上层的状态机，即 service 层；所以，lab2 写得不好，lab3 怎么也过不去，故需要确保 lab2 基本万无一失；
 
@@ -12,7 +10,7 @@ lab3 系列是将此前写好的 lab2 的 raft 库加以调用，在此基础之
 >
 >https://www.codercto.com/a/84326.html
 
-### lab3A_Key/value_service_without_snapshots
+## lab3A_Key/value_service_without_snapshots
 
 ### 实验内容
 
