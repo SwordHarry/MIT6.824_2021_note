@@ -1,4 +1,4 @@
-# MIT6824_2021_note
+# MIT6.824_2021_note
 
 ## summary
 
