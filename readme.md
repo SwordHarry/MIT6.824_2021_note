@@ -20,7 +20,7 @@
 - [lab4A](https://github.com/SwordHarry/MIT6.824_2021_note/blob/main/lab/lab4A_The_Shard_controller.md)
 - [lab4B(含 challenge)](https://github.com/SwordHarry/MIT6.824_2021_note/blob/main/lab/lab4B_Sharded_KeyValue_Server.md)
 
-全 lab `go-test-many.sh` 200 次以上无 fail，但不保证 bug free；
+全 lab `go-test-many.sh` 500 次以上无 fail，但不保证 bug free；
 
 此处仅存放部分代码片段或伪代码，基本是 md 笔记，仅供参考；
 
